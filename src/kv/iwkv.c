@@ -119,7 +119,7 @@ typedef enum {
   SBLK_FULL_LKEY  = 1UL,       /**< The lowest `SBLK` key is fully contained in `SBLK`. Persistent flag. */
   SBLK_DB         = 1UL << 3,  /**< This block is the start database block. */
   SBLK_DURTY      = 1UL << 4,  /**< Block data changed, block marked as durty and needs to be persisted */
-  //SBLK_KEY_ONLY   = 1UL << 5,
+  SBLK_LKEY_ONLY   = 1UL << 5,
 } sblk_flags_t;
 
 #define SBLK_PERSISTENT_FLAGS (SBLK_FULL_LKEY)
@@ -2078,10 +2078,10 @@ static iwrc _lx_roll_forward(IWLCTX *lx, uint8_t lvl) {
       } else if (lx->plower[ulvl] && lx->plower[ulvl]->addr == blkaddr) {
         sblk = lx->plower[ulvl];
       } else {
-        rc = _sblk_at(lx, blkaddr, 0, &sblk);
+        rc = _sblk_at(lx, blkaddr, SBLK_LKEY_ONLY, &sblk);
       }
     } else {
-      rc = _sblk_at(lx, blkaddr, 0, &sblk);
+      rc = _sblk_at(lx, blkaddr, SBLK_LKEY_ONLY, &sblk);
     }
     RCRET(rc);
 #ifndef NDEBUG
