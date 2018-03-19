@@ -1,29 +1,56 @@
-./iwkv_benchmark -b fillrandom2 -vz 900000 -n 12 -rs 1699437363
+time ./iwkv_benchmark -b fillseq2,readrandom -vz 200 -n 5000000
 
-./iwkv_benchmark -b fillrandom2 -vz 900000 -n 20 -rs 1699437363
+ random seed: 2343565628
+ num records: 5000000
+ read num records: 5000000
+ value size: 200
+ benchmarks: fillseq2,readrandom
 
-./iwkv_benchmark -b fillrandom2 -vz 900000 -n 21 -rs 3593624115
+IWKV 1.0.0
+Starting benchmark: 'fillseq2'
+Done 'fillseq2' in 16422
+Starting benchmark: 'readrandom'
+Done 'readrandom' in 22839
 
-1528847406
-./iwkv_benchmark -b fillrandom2 -vz 800000 -n 30
+real	0m39.504s
+user	0m35.792s
+sys	0m0.588s
 
-2104973614
-./iwkv_benchmark -b fillrandom2 -vz 700000 -n 46
+time ./leveldb_benchmark -b fillseq2,readrandom -vz 200 -n 5000000
 
-185489454
-./iwkv_benchmark -b fillrandom2 -vz 700000 -n 46
+ random seed: 3396951357
+ num records: 5000000
+ read num records: 5000000
+ value size: 200
+ benchmarks: fillseq2,readrandom
 
-3542766894
-./iwkv_benchmark -b fillrandom2 -vz 500000 -n 66
+LevelDB 1.20
+Starting benchmark: 'fillseq2'
+Done 'fillseq2' in 10273
+Starting benchmark: 'readrandom'
+Done 'readrandom' in 12144
 
-seed: 1497123886
-./iwkv_benchmark -b fillrandom2 -vz 100000 -n 416
+real	0m22.717s
+user	0m18.524s
+sys	0m5.316s
 
-seed: 3127398446
-./iwkv_benchmark -b fillrandom2 -vz 50000 -n 466
 
-seed: 1254641966
-./iwkv_benchmark -b fillrandom2 -vz 50000 -n 469
+time ./lmdb_benchmark -b fillseq2,readrandom -vz 200 -n 5000000
 
-2855228206
-./iwkv_benchmark -b fillrandom2 -vz 100000 -n 390
+ random seed: 1780677436
+ num records: 5000000
+ read num records: 5000000
+ value size: 200
+ benchmarks: fillseq2,readrandom
+
+LMDB 0.9.70
+Starting benchmark: 'fillseq2'
+Done 'fillseq2' in 30391
+Starting benchmark: 'readrandom'
+Done 'readrandom' in 5178
+
+real	0m35.786s
+user	0m14.168s
+sys	0m19.216s
+
+
